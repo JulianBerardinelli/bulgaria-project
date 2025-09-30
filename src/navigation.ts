@@ -1,4 +1,4 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -25,9 +25,14 @@ export const headerData = {
   ],
   actions: [
     {
-      text: 'Descargar propuesta',
-      href: getAsset('/docs/propuesta-escuela-integral.pdf'),
-      target: '_blank',
+      text: 'Descargar dossier',
+      variant: 'secondary',
+      type: 'button',
+      icon: 'tabler:download',
+      title: 'Disponible próximamente',
+      'aria-disabled': 'true',
+      disabled: true,
+      class: 'cursor-not-allowed opacity-70 hover:opacity-70 focus:outline-none focus:ring-0',
     },
   ],
 };
