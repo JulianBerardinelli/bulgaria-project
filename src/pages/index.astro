@@ -3,397 +3,383 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Contact from '~/components/widgets/Contact.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Escuela Integral de Fútbol Profesional en Bulgaria',
+  description:
+    'Sports Scouting Sudamérica presenta un ecosistema deportivo integral para formar futbolistas profesionales en Bulgaria con estándares internacionales.',
   ignoreTitleTemplate: true,
+};
+
+const heroActions = [
+  {
+    variant: 'primary',
+    text: 'Agendar reunión',
+    href: '#contacto',
+  },
+  {
+    text: 'Descargar propuesta',
+    href: '/docs/propuesta-escuela-integral.txt',
+    target: '_blank',
+    icon: 'tabler:download',
+  },
+];
+
+const stats = [
+  { amount: '14', title: 'Objetivos estratégicos', icon: 'tabler:target-arrow' },
+  { amount: '16', title: 'Ejes de gestión integral', icon: 'tabler:chart-infographic' },
+  { amount: '10', title: 'Áreas especializadas del staff', icon: 'tabler:users-group' },
+  { amount: '1', title: 'Copa Bulgaria anual', icon: 'tabler:trophy' },
+];
+
+const objetivos = [
+  {
+    title: 'Profesionalizar al personal',
+    description:
+      'Planificación, reorganización y capacitación permanente para cada área clave: prensa, mantenimiento, secretaría técnica y juveniles.',
+    icon: 'tabler:school',
+  },
+  {
+    title: 'Ciudad Deportiva de referencia',
+    description:
+      'Complejo con canchas principales y auxiliares, gimnasio, vestuarios, departamento médico y oficinas dedicadas al proyecto juvenil.',
+    icon: 'tabler:building-stadium',
+  },
+  {
+    title: 'Vínculo con las glorias búlgaras',
+    description:
+      'Eventos y partidos homenaje para integrar ídolos históricos como Hristo Stoichkov y fortalecer el sentido de pertenencia.',
+    icon: 'tabler:stars',
+  },
+  {
+    title: 'Centros de detección y regionalización',
+    description:
+      'Red de clubes aliados en ciudades estratégicas para captar talento, compartir metodología y sostener el proyecto formativo.',
+    icon: 'tabler:world-search',
+  },
+  {
+    title: 'Competencias formativas y Casa Club',
+    description:
+      'Divisiones inferiores compitiendo con metodología propia y una pensión juvenil que garantice bienestar y foco en el alto rendimiento.',
+    icon: 'tabler:home-heart',
+  },
+  {
+    title: 'Marca, marketing y presencia digital',
+    description:
+      'Página oficial, redes sociales, videoteca y carpeta institucional para comunicar logros, captar sponsors y posicionar al club.',
+    icon: 'tabler:brand-hipchat',
+  },
+];
+
+const formacionItems = [
+  {
+    title: 'Metodología sudamericana adaptada',
+    description:
+      'Capacitación continua para cuerpo técnico, preparación física y utilería con el acompañamiento del manager institucional.',
+  },
+  {
+    title: 'Proyecto de formación juvenil',
+    description:
+      'Plan de trabajo físico-técnico, premios por detección de futbolistas y seguimiento integral para acercarlos a la élite profesional.',
+  },
+  {
+    title: 'Competencia alineada al objetivo',
+    description:
+      'Organización de torneos y amistosos con clubes de primera categoría para medir el progreso y exponer a los talentos descubiertos.',
+  },
+];
+
+const infraestructuraItems = [
+  {
+    title: 'Ciudad Deportiva multifunción',
+    description:
+      'Planificación de usos, jornadas de presentación y comercialización de espacios publicitarios para reinvertir en infraestructura.',
+  },
+  {
+    title: 'Casa Club para juveniles',
+    description:
+      'Habitaciones equipadas, áreas de estudio y convivencia saludable que aseguren calidad de vida y foco académico-deportivo.',
+  },
+  {
+    title: 'Estadio y sede como vidriera',
+    description:
+      'Oficinas con vista al campo, museo y espacios para recibir sponsors siguiendo estándares de clubes europeos.',
+  },
+];
+
+const proyeccionItems = [
+  {
+    title: 'Plataforma digital y redes',
+    description:
+      'Sitio oficial, estrategia en redes sociales y contenidos exclusivos para informar, fidelizar y atraer inversores.',
+  },
+  {
+    title: 'Videoteca y carpeta institucional',
+    description:
+      'Producción audiovisual para mostrar el talento formado y disponer de material de venta inmediata para clubes interesados.',
+  },
+  {
+    title: 'Eventos insignia y Copa Bulgaria',
+    description:
+      'Torneo anual y presentaciones itinerantes que posicionan la marca en toda la región y fortalecen el sentido de pertenencia.',
+  },
+];
+
+const roadmapItems = [
+  {
+    title: 'Profesionalización del staff',
+    description:
+      'Entrega de manuales operativos, capacitaciones y organización del departamento comercial para generar recursos genuinos.',
+    icon: 'tabler:clipboard-check',
+  },
+  {
+    title: 'Puesta en marcha de la Ciudad Deportiva',
+    description:
+      'Ejecución de obras prioritarias, acondicionamiento de canchas y activaciones con juveniles y seleccionados locales.',
+    icon: 'tabler:crane',
+  },
+  {
+    title: 'Integración de glorias y sponsors',
+    description:
+      'Partidos homenaje y alianzas estratégicas para amplificar la visibilidad del proyecto y fortalecer la marca.',
+    icon: 'tabler:handshake',
+  },
+  {
+    title: 'Red de talentos y competencias',
+    description:
+      'Lanzamiento de centros de detección, acuerdos con clubes aliados y programación de torneos para cada categoría.',
+    icon: 'tabler:sitemap',
+  },
+  {
+    title: 'Escalamiento internacional',
+    description:
+      'Convenios para experiencias en Argentina, Brasil, México y Europa, posicionando a los egresados en mercados globales.',
+    icon: 'tabler:world',
+  },
+];
+
+const impactoItems = [
+  {
+    title: 'Acción social continua',
+    description:
+      'Programa “El fútbol es solo un juego” con actividades en comedores, ONG e instituciones para integrar a niños y jóvenes.',
+    icon: 'tabler:heart-handshake',
+  },
+  {
+    title: 'Educación y neurodeporte',
+    description:
+      'Seminarios, clínicas y acuerdos con universidades y especialistas para vincular ciencia, psicología y deporte.',
+    icon: 'tabler:brain',
+  },
+  {
+    title: 'Gobernanza y acompañamiento familiar',
+    description:
+      'Comisión de acción social y estructura organizativa que garantiza seguimiento humano, legal y financiero del proyecto.',
+    icon: 'tabler:users',
+  },
+];
+
+const faqs = [
+  {
+    title: '¿Qué diferencia a esta Escuela Integral?',
+    description:
+      'La combinación de talento sudamericano, la disciplina búlgara y una gestión profesional que abarca desde la captación hasta la proyección internacional.',
+  },
+  {
+    title: '¿Cómo se financia el proyecto?',
+    description:
+      'Mediante recursos genuinos de patrocinadores, merchandising, eventos, comercialización de espacios y futuras transferencias de jugadores formados.',
+  },
+  {
+    title: '¿Qué servicios se brindan a los juveniles?',
+    description:
+      'Pensión completa, acompañamiento académico, atención médica, nutricional y oportunidades de competir en ligas nacionales e internacionales.',
+  },
+  {
+    title: '¿Cómo puede sumarse un club o inversor?',
+    description:
+      'A través de convenios de colaboración, patrocinios o participación en la Copa Bulgaria y los centros de detección regionales.',
+  },
+];
+
+const contactForm = {
+  inputs: [
+    { name: 'name', label: 'Nombre y apellido', placeholder: 'Ingresa tu nombre completo' },
+    { type: 'email', name: 'email', label: 'Correo electrónico', placeholder: 'nombre@empresa.com' },
+    { name: 'organization', label: 'Organización', placeholder: 'Club, academia o empresa' },
+  ],
+  textarea: {
+    name: 'message',
+    label: '¿Cómo podemos ayudarte?',
+    placeholder: 'Cuéntanos qué tipo de colaboración o información estás buscando.',
+    rows: 5,
+  },
+  disclaimer: {
+    label: 'Acepto ser contactado para conocer más sobre el proyecto.',
+  },
+  button: 'Enviar mensaje',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
   <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    id="inicio"
+    tagline="Sports Scouting Sudamérica"
+    actions={heroActions}
+    image={{
+      src: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Entrenamiento de fútbol profesional',
+    }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
+      Escuela Integral de Fútbol Profesional en <span class="text-primary">Bulgaria</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">Bulgaria Proyect</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      Fundamos un ecosistema deportivo que une la fortaleza atlética búlgara con la creatividad sudamericana para formar profesionales capaces de conquistar el escenario internacional.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
-
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
+  <Note
+    title="Visión y misión:"
+    description="Crear una Escuela Integral que genere recursos permanentes, fortalezca la identidad local y prepare futbolistas para posicionar a Bulgaria entre las potencias mundiales."
   />
 
-  <!-- Content Widget **************** -->
+  <Stats
+    id="programa"
+    tagline="Programa integral"
+    title="Resultados que guían nuestra hoja de ruta"
+    stats={stats}
+  />
+
+  <Features
+    id="objetivos"
+    tagline="Objetivos estratégicos"
+    title="Un plan en 14 metas que transforman el fútbol búlgaro"
+    subtitle="Cada iniciativa responde a una necesidad concreta: profesionalización, infraestructura, marketing y crecimiento social."
+    items={objetivos}
+  />
 
   <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro 5.0',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
+    id="talento"
+    tagline="Formación y metodología"
+    title="Proyecto Deportivo Integral"
+    items={formacionItems}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1509027572580-43040f2d5142?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Entrenamiento táctico en campo',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        La excelencia deportiva nace desde la base
+      </h3>
+      Combinamos procesos de scouting, entrenamiento y acompañamiento humano para que cada futbolista crezca dentro de una cultura ganadora.
     </Fragment>
-
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-primary/5 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
-
   <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
+    id="infraestructura"
     isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
+    tagline="Infraestructura y bienestar"
+    title="Ciudad Deportiva y Casa Club"
+    items={infraestructuraItems}
     image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
+      src: 'https://images.unsplash.com/photo-1522780209446-8aa7642ba6de?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Complejo deportivo con cancha profesional',
     }}
   >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Espacios pensados para el alto rendimiento
+      </h3>
+      Cada inversión en infraestructura refuerza nuestra promesa de bienestar, profesionalismo y proyección internacional.
+    </Fragment>
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-secondary/5 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Steps Widget ****************** -->
+  <Content
+    tagline="Proyección y marca"
+    title="Expansión comercial y visibilidad global"
+    items={proyeccionItems}
+    image={{
+      src: 'https://images.unsplash.com/photo-1500920503744-b364f1a162ec?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Equipo celebrando con aficionados',
+    }}
+    isAfterContent
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Identidad que se siente dentro y fuera de la cancha
+      </h3>
+      Desde la comunicación digital hasta los eventos insignia, todo el proyecto está orientado a generar recursos sostenibles y notoriedad internacional.
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-accent/5 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
+    id="hoja-de-ruta"
+    tagline="Roadmap"
+    title="Etapas de implementación"
+    subtitle="Una secuencia clara para activar, consolidar y proyectar cada área del proyecto."
+    items={roadmapItems}
   />
-
-  <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
+    id="impacto"
+    tagline="Impacto social y educativo"
+    title="Una escuela que transforma comunidades"
+    subtitle="El proyecto trasciende la competencia deportiva y se integra con programas educativos, sociales y familiares."
+    items={impactoItems}
   />
-
-  <!-- FAQs Widget ******************* -->
 
   <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
+    id="preguntas"
+    tagline="Preguntas frecuentes"
+    title="Todo lo que necesitas saber"
+    subtitle="Resolvemos las dudas más habituales de clubes, inversores y aliados estratégicos."
+    items={faqs}
+    columns={2}
   />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
 
   <CallToAction
+    id="alianzas"
+    title="Construyamos juntos la próxima potencia del fútbol búlgaro"
+    subtitle="Co-creemos alianzas estratégicas que potencien infraestructura, talento y visibilidad internacional."
     actions={[
+      { text: 'Hablar con el equipo', href: '#contacto', variant: 'primary' },
       {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
+        text: 'Descargar dossier',
+        href: '/docs/propuesta-escuela-integral.txt',
         icon: 'tabler:download',
+        target: '_blank',
       },
     ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
+  />
 
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
+  <Contact
+    id="contacto"
+    tagline="Contacto"
+    title="Conversemos sobre el proyecto"
+    subtitle="Completa el formulario y coordinemos una reunión presencial o virtual."
+    inputs={contactForm.inputs}
+    textarea={contactForm.textarea}
+    disclaimer={contactForm.disclaimer}
+    button={contactForm.button}
+  />
 </Layout>
