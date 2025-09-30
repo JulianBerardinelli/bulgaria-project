@@ -1,4 +1,5 @@
 import { getPermalink } from './utils/permalinks';
+import dossierPdf from '~/assets/docs/sports-scouting-sudamerica-bulgaria.pdf';
 
 export const headerData = {
   links: [
@@ -27,12 +28,9 @@ export const headerData = {
     {
       text: 'Descargar dossier',
       variant: 'secondary',
-      type: 'button',
       icon: 'tabler:download',
-      title: 'Disponible próximamente',
-      'aria-disabled': 'true',
-      disabled: true,
-      class: 'cursor-not-allowed opacity-70 hover:opacity-70 focus:outline-none focus:ring-0',
+      href: dossierPdf,
+      download: true,
     },
   ],
 };
