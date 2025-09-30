@@ -1,5 +1,5 @@
 site:
-  name: Sports Scouting Sudamérica · Bulgaria
+  name: Sports Scouting Sudamérica
   site: 'https://sports-scouting.bg'
   base: '/'
   trailingSlash: false
