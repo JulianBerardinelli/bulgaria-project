@@ -51,40 +51,52 @@ const LanguageSelector = ({ currentLang, className }: Props) => {
 
   const selectedKeys = useMemo(() => new Set<SupportedLanguage>([currentLang]), [currentLang]);
 
+  const menuItems = useMemo(
+    () => SUPPORTED_LANGUAGES.map((code) => ({ code, option: LANGUAGE_OPTIONS[code] })),
+    [],
+  );
+
   const triggerClassName = [
-    'min-w-0 h-10 px-3 sm:px-4',
-    'bg-white/80 dark:bg-slate-900/80 border border-default-200/70 dark:border-white/10',
-    'shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur data-[hover=true]:bg-default-100',
-    'text-sm font-semibold text-default-700 dark:text-default-200',
+    'group relative h-10 w-10 min-w-0 rounded-full p-0',
+    'border border-default-200/70 dark:border-white/10',
+    'bg-white/80 dark:bg-slate-900/80 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur',
+    'data-[hover=true]:bg-default-100/70',
     className,
   ]
     .filter(Boolean)
     .join(' ');
 
+  const dropdownClassNames = useMemo(
+    () => ({
+      base: 'z-[60]',
+      content:
+        'z-[60] min-w-[220px] rounded-2xl border border-default-200/70 bg-white/95 p-2 shadow-xl backdrop-blur dark:border-white/10 dark:bg-slate-900/95',
+    }),
+    [],
+  );
+
   return (
     <HeroUIProvider>
-      <Dropdown placement="bottom-end" classNames={{ content: 'min-w-[220px] rounded-2xl border border-default-200/70 shadow-lg p-2' }}>
+      <Dropdown placement="bottom-end" classNames={dropdownClassNames}>
         <DropdownTrigger>
           <Button
             disableAnimation
             disableRipple
             radius="full"
             variant="flat"
+            isIconOnly
+            aria-label={`Change language. Current language: ${selectedOption.nativeLabel}`}
             className={triggerClassName}
-            startContent={
-              <Avatar
-                src={selectedOption.flagSrc}
-                alt={selectedOption.nativeLabel}
-                radius="full"
-                className="h-6 w-6 border border-white/80 bg-transparent shadow-sm"
-              />
-            }
-            endContent={<ChevronDownIcon className="h-4 w-4 text-default-400" />}
           >
-            <span className="flex flex-col items-start leading-tight">
-              <span className="text-sm font-semibold text-default-700 dark:text-default-100">{selectedOption.nativeLabel}</span>
-              <span className="text-[0.7rem] uppercase tracking-wide text-default-400 sm:hidden">{currentLang}</span>
-              <span className="hidden text-xs font-medium text-default-400 sm:inline">{selectedOption.label}</span>
+            <span className="sr-only">{selectedOption.nativeLabel}</span>
+            <Avatar
+              src={selectedOption.flagSrc}
+              alt=""
+              radius="full"
+              className="h-6 w-6 border border-white/80 bg-transparent shadow-sm"
+            />
+            <span className="pointer-events-none absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-default-200/70 bg-white text-default-400 shadow-sm dark:border-white/20 dark:bg-slate-900">
+              <ChevronDownIcon className="h-3 w-3" />
             </span>
           </Button>
         </DropdownTrigger>
@@ -97,28 +109,25 @@ const LanguageSelector = ({ currentLang, className }: Props) => {
             base: 'data-[hover=true]:bg-default-100/80 data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary',
           }}
         >
-          {SUPPORTED_LANGUAGES.map((code) => {
-            const option = LANGUAGE_OPTIONS[code];
-            return (
-              <DropdownItem
-                key={code}
-                startContent={
-                  <Avatar
-                    src={option.flagSrc}
-                    alt={option.nativeLabel}
-                    radius="full"
-                    className="h-7 w-7 border border-white/80 bg-transparent shadow-sm"
-                  />
-                }
-                className="gap-3 rounded-xl px-3 py-2 text-start"
-              >
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-default-700 dark:text-default-100">{option.nativeLabel}</span>
-                  <span className="text-xs font-medium text-default-400">{option.label}</span>
-                </div>
-              </DropdownItem>
-            );
-          })}
+          {menuItems.map(({ code, option }) => (
+            <DropdownItem
+              key={code}
+              startContent={
+                <Avatar
+                  src={option.flagSrc}
+                  alt={option.nativeLabel}
+                  radius="full"
+                  className="h-7 w-7 border border-white/80 bg-transparent shadow-sm"
+                />
+              }
+              className="gap-3 rounded-xl px-3 py-2 text-start"
+            >
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-default-700 dark:text-default-100">{option.nativeLabel}</span>
+                <span className="text-xs font-medium text-default-400">{option.label}</span>
+              </div>
+            </DropdownItem>
+          ))}
         </DropdownMenu>
       </Dropdown>
     </HeroUIProvider>
