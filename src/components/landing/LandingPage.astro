@@ -1,0 +1,176 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Contact from '~/components/widgets/Contact.astro';
+
+import { getLandingContent } from '~/data/landingContent';
+import type { SupportedLanguage } from '~/data/languages';
+
+export interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const content = getLandingContent(lang);
+
+const heroActions = [...content.hero.actions, content.hero.disabledAction];
+const callToActionButtons = [content.callToAction.primaryAction, content.callToAction.disabledAction];
+---
+
+<Layout
+  metadata={content.metadata}
+  headerData={content.navigation.header}
+  footerData={content.navigation.footer}
+  lang={lang}
+  showLanguageSelector
+>
+  <Hero
+    id="inicio"
+    tagline={content.hero.tagline}
+    actions={heroActions}
+    image={{
+      src: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1600&q=80',
+      alt: content.hero.imageAlt,
+    }}
+  >
+    <Fragment slot="title">
+      {content.hero.title.main}{' '}
+      <span class="text-primary">{content.hero.title.highlight}</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">{content.hero.subtitle}</Fragment>
+  </Hero>
+
+  <Features2
+    id="vision"
+    tagline={content.vision.tagline}
+    title={content.vision.title}
+    subtitle={content.vision.subtitle}
+    items={content.vision.items}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-primary/5 dark:bg-white/5"></div>
+    </Fragment>
+  </Features2>
+
+  <Stats
+    id="programa"
+    tagline={content.stats.tagline}
+    title={content.stats.title}
+    stats={content.stats.items}
+  />
+
+  <Features
+    id="objetivos"
+    tagline={content.objectives.tagline}
+    title={content.objectives.title}
+    subtitle={content.objectives.subtitle}
+    items={content.objectives.items}
+  />
+
+  <Content
+    id="talento"
+    tagline={content.training.tagline}
+    title={content.training.title}
+    items={content.training.items}
+    image={{ src: '~/assets/images/landing/img-3.jpg', alt: content.training.imageAlt }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {content.training.introTitle}
+      </h3>
+      {content.training.introText}
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-primary/5 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    id="infraestructura"
+    isReversed
+    tagline={content.infrastructure.tagline}
+    title={content.infrastructure.title}
+    items={content.infrastructure.items}
+    image={{ src: '~/assets/images/landing/img-2.jpg', alt: content.infrastructure.imageAlt }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {content.infrastructure.introTitle}
+      </h3>
+      {content.infrastructure.introText}
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary/5 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    tagline={content.projection.tagline}
+    title={content.projection.title}
+    items={content.projection.items}
+    image={{ src: '~/assets/images/landing/img-1.jpg', alt: content.projection.imageAlt }}
+    isAfterContent
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {content.projection.introTitle}
+      </h3>
+      {content.projection.introText}
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-accent/5 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Steps
+    id="hoja-de-ruta"
+    tagline={content.roadmap.tagline}
+    title={content.roadmap.title}
+    subtitle={content.roadmap.subtitle}
+    items={content.roadmap.items}
+  />
+
+  <Features2
+    id="impacto"
+    tagline={content.impact.tagline}
+    title={content.impact.title}
+    subtitle={content.impact.subtitle}
+    items={content.impact.items}
+  />
+
+  <FAQs
+    id="preguntas"
+    tagline={content.faqs.tagline}
+    title={content.faqs.title}
+    subtitle={content.faqs.subtitle}
+    items={content.faqs.items}
+    columns={2}
+  />
+
+  <CallToAction
+    id="alianzas"
+    title={content.callToAction.title}
+    subtitle={content.callToAction.subtitle}
+    actions={callToActionButtons}
+  />
+
+  <Contact
+    id="contacto"
+    tagline={content.contact.tagline}
+    title={content.contact.title}
+    subtitle={content.contact.subtitle}
+    inputs={content.contact.form.inputs}
+    textarea={content.contact.form.textarea}
+    disclaimer={content.contact.form.disclaimer}
+    button={content.contact.form.button}
+  />
+</Layout>

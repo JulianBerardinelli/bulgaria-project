@@ -2,20 +2,37 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
-import { headerData, footerData } from '~/navigation';
+import { headerData as defaultHeaderData, footerData as defaultFooterData } from '~/navigation';
+import type { SupportedLanguage } from '~/data/languages';
 
 import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
+  headerData?: typeof defaultHeaderData;
+  footerData?: typeof defaultFooterData;
+  lang?: SupportedLanguage;
+  showLanguageSelector?: boolean;
 }
 
-const { metadata } = Astro.props;
+const {
+  metadata,
+  headerData = defaultHeaderData,
+  footerData = defaultFooterData,
+  lang = 'es',
+  showLanguageSelector = false,
+} = Astro.props;
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} lang={lang}>
   <slot name="header">
-    <Header {...headerData} isSticky showToggleTheme />
+    <Header
+      {...headerData}
+      isSticky
+      showToggleTheme
+      showLanguageSelector={showLanguageSelector}
+      currentLang={lang}
+    />
   </slot>
   <main>
     <slot />

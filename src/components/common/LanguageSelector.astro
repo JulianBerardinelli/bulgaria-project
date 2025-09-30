@@ -1,0 +1,64 @@
+---
+import { SUPPORTED_LANGUAGES, type SupportedLanguage } from '~/data/languages';
+
+export interface Props {
+  currentLang: SupportedLanguage;
+}
+
+const { currentLang } = Astro.props;
+---
+
+<div
+  class="relative flex items-center gap-2 md:gap-3"
+  data-language-selector
+  data-current-lang={currentLang}
+>
+  {SUPPORTED_LANGUAGES.map((lang) => (
+    <button
+      type="button"
+      data-lang={lang.code}
+      class:list={[
+        'flex items-center gap-2 rounded-full border border-transparent px-2.5 py-1.5 text-sm font-semibold transition-colors',
+        'bg-white/70 text-default shadow-sm ring-1 ring-black/5 hover:ring-primary/40 dark:bg-slate-800/70 dark:text-white',
+        {
+          'bg-primary text-white hover:ring-primary/60 dark:bg-primary': lang.code === currentLang,
+        },
+      ]}
+      aria-current={lang.code === currentLang ? 'true' : 'false'}
+      aria-pressed={lang.code === currentLang ? 'true' : 'false'}
+      aria-label={`Switch to ${lang.nativeName}`}
+    >
+      <img src={lang.flag} alt={lang.nativeName} class="h-4 w-4 rounded-full object-cover" loading="lazy" />
+      <span class="hidden sm:inline">{lang.nativeName}</span>
+      <span class="sm:hidden uppercase">{lang.code}</span>
+    </button>
+  ))}
+</div>
+
+<script is:inline>
+  const container = document.currentScript?.parentElement;
+  if (!container) {
+    throw new Error('Language selector container not found');
+  }
+
+  const buttons = Array.from(container.querySelectorAll('button[data-lang]'));
+
+  const getLanguagePath = (lang) => (lang === 'es' ? '/' : `/${lang}/`);
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const lang = button.dataset.lang;
+      if (!lang) return;
+
+      const target = getLanguagePath(lang);
+      const currentPath = window.location.pathname;
+      const hash = window.location.hash ?? '';
+
+      if (target === currentPath || (target === '/' && currentPath === '/')) {
+        return;
+      }
+
+      window.location.href = `${target}${hash}`;
+    });
+  });
+</script>
