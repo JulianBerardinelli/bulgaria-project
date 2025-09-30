@@ -13,13 +13,13 @@ export const DEFAULT_LANGUAGE: SupportedLanguage = 'es';
 export const LANGUAGE_OPTIONS: Record<SupportedLanguage, LanguageOption> = {
   es: {
     code: 'es',
-    label: 'Spanish',
+    label: 'Spanish (Argentina)',
     nativeLabel: 'Español',
     flagSrc: '/flags/es.svg',
   },
   en: {
     code: 'en',
-    label: 'English',
+    label: 'English (United Kingdom)',
     nativeLabel: 'English',
     flagSrc: '/flags/en.svg',
   },

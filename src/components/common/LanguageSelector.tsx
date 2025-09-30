@@ -1,6 +1,29 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
+
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  HeroUIProvider,
+} from '@heroui/react';
 
 import { LANGUAGE_OPTIONS, SUPPORTED_LANGUAGES, buildLocalizedPath, getPathWithoutLanguage, type SupportedLanguage } from '~/utils/i18n';
+
+const ChevronDownIcon = ({ className }: { className?: string }) => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    className={className}
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 interface Props {
   currentLang: SupportedLanguage;
@@ -24,40 +47,81 @@ const LanguageSelector = ({ currentLang, className }: Props) => {
     [currentLang],
   );
 
-  const wrapperClass = ['flex items-center gap-1 rounded-full border border-transparent bg-white/70 p-1 shadow-sm backdrop-blur dark:bg-slate-800/70', className]
+  const selectedOption = LANGUAGE_OPTIONS[currentLang];
+
+  const selectedKeys = useMemo(() => new Set<SupportedLanguage>([currentLang]), [currentLang]);
+
+  const triggerClassName = [
+    'min-w-0 h-10 px-3 sm:px-4',
+    'bg-white/80 dark:bg-slate-900/80 border border-default-200/70 dark:border-white/10',
+    'shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur data-[hover=true]:bg-default-100',
+    'text-sm font-semibold text-default-700 dark:text-default-200',
+    className,
+  ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div className={wrapperClass}>
-      {SUPPORTED_LANGUAGES.map((code) => {
-        const option = LANGUAGE_OPTIONS[code];
-        const isActive = code === currentLang;
-        const baseClasses =
-          'flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900';
-        const stateClasses = isActive
-          ? 'bg-primary text-white shadow-sm shadow-primary/40 dark:bg-secondary'
-          : 'text-slate-700 hover:bg-primary/10 dark:text-slate-200 dark:hover:bg-white/10';
-
-        return (
-          <button
-            key={code}
-            type="button"
-            onClick={() => handleSelect(code)}
-            className={`${baseClasses} ${stateClasses}`.trim()}
-            aria-pressed={isActive}
+    <HeroUIProvider>
+      <Dropdown placement="bottom-end" classNames={{ content: 'min-w-[220px] rounded-2xl border border-default-200/70 shadow-lg p-2' }}>
+        <DropdownTrigger>
+          <Button
+            disableAnimation
+            disableRipple
+            radius="full"
+            variant="flat"
+            className={triggerClassName}
+            startContent={
+              <Avatar
+                src={selectedOption.flagSrc}
+                alt={selectedOption.nativeLabel}
+                radius="full"
+                className="h-6 w-6 border border-white/80 bg-transparent shadow-sm"
+              />
+            }
+            endContent={<ChevronDownIcon className="h-4 w-4 text-default-400" />}
           >
-            <img
-              src={option.flagSrc}
-              alt={option.nativeLabel}
-              className="h-4 w-4 rounded-full border border-white object-cover shadow-sm"
-            />
-            <span className="hidden sm:inline">{option.nativeLabel}</span>
-            <span className="inline sm:hidden uppercase">{code}</span>
-          </button>
-        );
-      })}
-    </div>
+            <span className="flex flex-col items-start leading-tight">
+              <span className="text-sm font-semibold text-default-700 dark:text-default-100">{selectedOption.nativeLabel}</span>
+              <span className="text-[0.7rem] uppercase tracking-wide text-default-400 sm:hidden">{currentLang}</span>
+              <span className="hidden text-xs font-medium text-default-400 sm:inline">{selectedOption.label}</span>
+            </span>
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          aria-label="Language selector"
+          selectionMode="single"
+          selectedKeys={selectedKeys}
+          onAction={(key) => handleSelect(key as SupportedLanguage)}
+          itemClasses={{
+            base: 'data-[hover=true]:bg-default-100/80 data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary',
+          }}
+        >
+          {SUPPORTED_LANGUAGES.map((code) => {
+            const option = LANGUAGE_OPTIONS[code];
+            return (
+              <DropdownItem
+                key={code}
+                startContent={
+                  <Avatar
+                    src={option.flagSrc}
+                    alt={option.nativeLabel}
+                    radius="full"
+                    className="h-7 w-7 border border-white/80 bg-transparent shadow-sm"
+                  />
+                }
+                className="gap-3 rounded-xl px-3 py-2 text-start"
+              >
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-default-700 dark:text-default-100">{option.nativeLabel}</span>
+                  <span className="text-xs font-medium text-default-400">{option.label}</span>
+                </div>
+              </DropdownItem>
+            );
+          })}
+        </DropdownMenu>
+      </Dropdown>
+    </HeroUIProvider>
   );
 };
 
