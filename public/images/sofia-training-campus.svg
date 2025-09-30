@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Complejo deportivo profesional en las afueras de Sofía</title>
+  <desc id="desc">Ilustración de una ciudad deportiva con edificio moderno, canchas de fútbol y montañas de Vitosha al fondo.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7cc8ff" />
+      <stop offset="100%" stop-color="#d9f1ff" />
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#20414c" />
+      <stop offset="100%" stop-color="#3b6c72" />
+    </linearGradient>
+    <linearGradient id="field" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1f873c" />
+      <stop offset="100%" stop-color="#0b5d24" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="320" fill="url(#sky)" />
+  <path d="M0 320 L180 200 L360 280 L520 190 L720 300 L960 260 L960 0 L0 0 Z" fill="url(#mountain)" opacity="0.9" />
+  <rect y="320" width="960" height="320" fill="url(#field)" />
+  <g transform="translate(120,360)">
+    <rect x="0" y="40" width="640" height="220" rx="24" fill="rgba(245,248,250,0.92)" stroke="#123c24" stroke-width="4" />
+    <rect x="40" y="90" width="560" height="120" rx="16" fill="#ffffff" stroke="#1c5a33" stroke-width="3" />
+    <g transform="translate(40,90)">
+      <rect width="560" height="120" fill="none" stroke="#c9d1d9" stroke-width="2" stroke-dasharray="18 12" />
+      <rect x="48" y="16" width="160" height="88" rx="12" fill="#c0e7ff" opacity="0.8" />
+      <rect x="240" y="16" width="160" height="88" rx="12" fill="#dbeef2" opacity="0.9" />
+      <rect x="432" y="16" width="88" height="88" rx="12" fill="#fef5f2" opacity="0.95" />
+    </g>
+    <rect x="24" y="16" width="592" height="34" rx="12" fill="#0b3323" opacity="0.7" />
+    <circle cx="96" cy="28" r="9" fill="#d7261c" />
+    <circle cx="132" cy="28" r="9" fill="#00966E" />
+    <circle cx="168" cy="28" r="9" fill="#ffcc29" />
+  </g>
+  <g transform="translate(72,420)">
+    <rect width="240" height="160" fill="rgba(15,81,42,0.78)" stroke="rgba(255,255,255,0.7)" stroke-width="4" rx="18" />
+    <circle cx="120" cy="80" r="70" fill="rgba(0,0,0,0.08)" />
+    <rect x="80" y="36" width="80" height="88" rx="16" fill="#ffffff" opacity="0.9" />
+    <rect x="112" y="44" width="16" height="72" fill="#00966E" />
+    <rect x="80" y="72" width="80" height="16" fill="#d7261c" />
+  </g>
+  <g transform="translate(720,440)">
+    <rect width="160" height="120" fill="rgba(36,64,45,0.78)" stroke="rgba(255,255,255,0.6)" stroke-width="4" rx="16" />
+    <path d="M36 84 L80 40 L124 84" fill="none" stroke="#fdfdfd" stroke-width="10" stroke-linecap="round" />
+    <path d="M64 88 L64 116" stroke="#fdfdfd" stroke-width="10" stroke-linecap="round" />
+    <path d="M96 88 L96 116" stroke="#fdfdfd" stroke-width="10" stroke-linecap="round" />
+  </g>
+  <path d="M200 556 H760" stroke="#f5f1d5" stroke-width="6" stroke-dasharray="14 12" stroke-linecap="round" />
+  <circle cx="480" cy="520" r="92" fill="none" stroke="#f5f1d5" stroke-width="5" />
+  <circle cx="480" cy="520" r="6" fill="#f5f1d5" />
+</svg>

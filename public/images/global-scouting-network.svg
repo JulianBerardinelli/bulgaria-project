@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Red global de scouting y alianzas estratégicas</title>
+  <desc id="desc">Ilustración abstracta de conexiones globales para representar visibilidad internacional y acuerdos estratégicos.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0f3528" />
+      <stop offset="60%" stop-color="#09231a" />
+      <stop offset="100%" stop-color="#04120c" />
+    </radialGradient>
+    <linearGradient id="node" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#00b686" />
+      <stop offset="100%" stop-color="#d7261c" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="640" fill="url(#bg)" />
+  <g stroke="rgba(255,255,255,0.18)" stroke-width="2">
+    <path d="M140 180 Q280 90 420 180 T700 180 T860 280" fill="none" />
+    <path d="M160 380 Q300 300 440 360 T740 360 T860 480" fill="none" />
+    <path d="M220 540 Q340 460 480 500 T780 500" fill="none" />
+    <path d="M160 240 Q320 320 480 260 T800 240" fill="none" />
+  </g>
+  <g fill="url(#node)">
+    <circle cx="160" cy="380" r="22" />
+    <circle cx="300" cy="300" r="18" />
+    <circle cx="440" cy="360" r="20" />
+    <circle cx="700" cy="180" r="24" />
+    <circle cx="820" cy="260" r="17" />
+    <circle cx="860" cy="480" r="25" />
+    <circle cx="640" cy="420" r="19" />
+    <circle cx="480" cy="500" r="23" />
+    <circle cx="220" cy="540" r="18" />
+  </g>
+  <g fill="rgba(255,255,255,0.8)" font-family="'Inter', sans-serif" font-weight="600">
+    <text x="160" y="416" font-size="24">Talent hubs</text>
+    <text x="440" y="348" font-size="20">Scouting</text>
+    <text x="700" y="166" font-size="24">Uefa clubs</text>
+    <text x="820" y="296" font-size="18">Media</text>
+    <text x="860" y="520" font-size="22">Sponsors</text>
+    <text x="480" y="540" font-size="20">Academy</text>
+  </g>
+</svg>

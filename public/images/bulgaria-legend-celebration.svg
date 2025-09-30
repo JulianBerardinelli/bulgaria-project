@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Celebración de la selección búlgara en el Mundial 1994</title>
+  <desc id="desc">Ilustración estilizada de futbolistas búlgaros celebrando un gol histórico, con la bandera nacional de fondo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fcfefd" />
+      <stop offset="50%" stop-color="#e6f5ec" />
+      <stop offset="100%" stop-color="#cfeae0" />
+    </linearGradient>
+    <linearGradient id="flag" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#00966E" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#d6261c" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="640" fill="url(#bg)" />
+  <path d="M-40 160 Q180 260 480 220 T1000 220" fill="url(#flag)" opacity="0.45" />
+  <path d="M-40 380 Q160 460 480 420 T1000 420" fill="rgba(0,150,110,0.28)" />
+  <g transform="translate(200,240)">
+    <path d="M40 220 L80 120 L92 50 L142 40 L170 60 L156 140 L180 220" fill="#fdfdfd" stroke="#e4ebee" stroke-width="6" stroke-linejoin="round" />
+    <path d="M92 52 L142 42" stroke="#00966E" stroke-width="14" stroke-linecap="round" />
+    <circle cx="126" cy="24" r="28" fill="#ffd7cc" stroke="#f7a88b" stroke-width="6" />
+    <path d="M112 16 q14-16 28 0" stroke="#121417" stroke-width="6" stroke-linecap="round" />
+    <path d="M126 24 v52" stroke="#121417" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <g transform="translate(360,230)">
+    <path d="M20 230 L60 118 L100 110 L150 120 L136 188 L166 228" fill="#ffffff" stroke="#dce4ea" stroke-width="6" stroke-linejoin="round" />
+    <path d="M60 118 L106 68 L154 96" fill="none" stroke="#d6261c" stroke-width="18" stroke-linecap="round" />
+    <circle cx="108" cy="44" r="30" fill="#ffd9c8" stroke="#f4aa8f" stroke-width="6" />
+    <path d="M92 34 q16-18 32 0" stroke="#121417" stroke-width="6" stroke-linecap="round" />
+    <path d="M108 44 v56" stroke="#121417" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <g transform="translate(520,240)">
+    <path d="M40 220 L70 120 L120 110 L160 120 L180 220" fill="#ffffff" stroke="#dce1e9" stroke-width="6" stroke-linejoin="round" />
+    <path d="M76 118 L106 70 L152 90" fill="none" stroke="#00966E" stroke-width="18" stroke-linecap="round" />
+    <circle cx="116" cy="52" r="28" fill="#ffd9c8" stroke="#f4aa8f" stroke-width="6" />
+    <path d="M100 44 q16-18 32 0" stroke="#121417" stroke-width="6" stroke-linecap="round" />
+    <path d="M116 52 v52" stroke="#121417" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <g transform="translate(140,420)">
+    <rect width="680" height="120" rx="30" fill="rgba(12,56,33,0.75)" />
+    <text x="50%" y="68" text-anchor="middle" font-family="'Inter', 'Arial', sans-serif" font-size="56" fill="#fdfdfd" font-weight="700">Un legado de inspiración para nuevas generaciones</text>
+  </g>
+</svg>
