@@ -93,7 +93,10 @@ const LanguageSelector = ({ currentLang, className }: Props) => {
               src={selectedOption.flagSrc}
               alt=""
               radius="full"
-              className="h-6 w-6 border border-white/80 bg-transparent shadow-sm"
+              classNames={{
+                base: 'h-6 w-6 border border-white/80 bg-transparent shadow-sm',
+                img: 'h-full w-full object-cover',
+              }}
             />
             <span className="pointer-events-none absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-default-200/70 bg-white text-default-400 shadow-sm dark:border-white/20 dark:bg-slate-900">
               <ChevronDownIcon className="h-3 w-3" />
@@ -117,7 +120,10 @@ const LanguageSelector = ({ currentLang, className }: Props) => {
                   src={option.flagSrc}
                   alt={option.nativeLabel}
                   radius="full"
-                  className="h-7 w-7 border border-white/80 bg-transparent shadow-sm"
+                  classNames={{
+                    base: 'h-7 w-7 border border-white/80 bg-transparent shadow-sm',
+                    img: 'h-full w-full object-cover',
+                  }}
                 />
               }
               className="gap-3 rounded-xl px-3 py-2 text-start"
