@@ -1,67 +1,67 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Sports Scouting Sudamérica
+  site: 'https://sports-scouting.bg'
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: null
 
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Sports Scouting Sudamérica · Bulgaria
+    template: '%s · Sports Scouting Sudamérica'
+  description: "Proyecto integral para fundar una Escuela Integral de Fútbol profesional en Bulgaria que une el talento búlgaro y sudamericano para competir al máximo nivel internacional."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Sports Scouting Sudamérica · Bulgaria
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
+    handle: '@sportsscouting'
+    site: '@sportsscouting'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: es
   textDirection: ltr
 
 apps:
   blog:
-    isEnabled: true
-    postsPerPage: 6
+    isEnabled: false
+    postsPerPage: 0
 
     post:
-      isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
-      robots:
-        index: true
-
-    list:
-      isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
-      robots:
-        index: true
-
-    category:
-      isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
-      robots:
-        index: true
-
-    tag:
-      isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      isEnabled: false
+      permalink: '/%slug%'
       robots:
         index: false
 
-    isRelatedPostsEnabled: true
-    relatedPostsCount: 4
+    list:
+      isEnabled: false
+      pathname: 'blog'
+      robots:
+        index: false
+
+    category:
+      isEnabled: false
+      pathname: 'category'
+      robots:
+        index: false
+
+    tag:
+      isEnabled: false
+      pathname: 'tag'
+      robots:
+        index: false
+
+    isRelatedPostsEnabled: false
+    relatedPostsCount: 0
 
 analytics:
   vendors:
