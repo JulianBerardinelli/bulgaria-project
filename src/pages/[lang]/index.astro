@@ -1,0 +1,18 @@
+---
+import LandingPage from '~/components/landing/LandingPage.astro';
+import { DEFAULT_LANGUAGE, isSupportedLanguage, resolveLanguage } from '~/utils/i18n';
+
+const { lang } = Astro.params;
+
+if (!lang || !isSupportedLanguage(lang)) {
+  return Astro.redirect('/');
+}
+
+if (lang === DEFAULT_LANGUAGE) {
+  return Astro.redirect('/');
+}
+
+const language = resolveLanguage(lang);
+---
+
+<LandingPage lang={language} />

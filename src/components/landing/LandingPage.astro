@@ -1,0 +1,177 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Contact from '~/components/widgets/Contact.astro';
+
+import { getLandingContent } from '~/data/landingContent';
+import { getNavigationData } from '~/navigation';
+import { DEFAULT_LANGUAGE, type SupportedLanguage } from '~/utils/i18n';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = DEFAULT_LANGUAGE } = Astro.props;
+const content = getLandingContent(lang);
+const navigation = getNavigationData(lang);
+
+const backgroundClasses: Record<string, string> = {
+  primary: 'bg-primary/5 dark:bg-white/5',
+  secondary: 'bg-secondary/5 dark:bg-transparent',
+  accent: 'bg-accent/5 dark:bg-transparent',
+};
+
+const renderBackground = (tone?: string) =>
+  tone && backgroundClasses[tone]
+    ? `<div class="absolute inset-0 ${backgroundClasses[tone]}"></div>`
+    : undefined;
+---
+
+<PageLayout metadata={content.metadata} headerData={navigation.headerData} footerData={navigation.footerData} lang={lang}>
+  <Hero id="inicio" tagline={content.hero.tagline} actions={content.hero.actions} image={content.hero.image}>
+    <Fragment slot="title">
+      <Fragment set:html={content.hero.titleHtml} />
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <Fragment set:html={content.hero.subtitleHtml} />
+    </Fragment>
+  </Hero>
+
+  <Features2
+    id={content.vision.id}
+    tagline={content.vision.tagline}
+    title={content.vision.title}
+    subtitle={content.vision.subtitle}
+    items={content.vision.items}
+  >
+    {content.vision.background && (
+      <Fragment slot="bg">
+        <Fragment set:html={renderBackground(content.vision.background)} />
+      </Fragment>
+    )}
+  </Features2>
+
+  <Stats id="programa" tagline={content.stats.tagline} title={content.stats.title} stats={content.stats.stats} />
+
+  <Features
+    id="objetivos"
+    tagline={content.objectives.tagline}
+    title={content.objectives.title}
+    subtitle={content.objectives.subtitle}
+    items={content.objectives.items}
+  />
+
+  <Content
+    id="talento"
+    tagline={content.talent.tagline}
+    title={content.talent.title}
+    items={content.talent.items}
+    image={content.talent.image}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">{content.talent.contentTitle}</h3>
+      {content.talent.contentBody}
+    </Fragment>
+    {content.talent.background && (
+      <Fragment slot="bg">
+        <Fragment set:html={renderBackground(content.talent.background)} />
+      </Fragment>
+    )}
+  </Content>
+
+  <Content
+    id="infraestructura"
+    isReversed
+    tagline={content.infrastructure.tagline}
+    title={content.infrastructure.title}
+    items={content.infrastructure.items}
+    image={content.infrastructure.image}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">{content.infrastructure.contentTitle}</h3>
+      {content.infrastructure.contentBody}
+    </Fragment>
+    {content.infrastructure.background && (
+      <Fragment slot="bg">
+        <Fragment set:html={renderBackground(content.infrastructure.background)} />
+      </Fragment>
+    )}
+  </Content>
+
+  <Content
+    id="proyeccion"
+    tagline={content.projection.tagline}
+    title={content.projection.title}
+    items={content.projection.items}
+    image={content.projection.image}
+    isAfterContent
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">{content.projection.contentTitle}</h3>
+      {content.projection.contentBody}
+    </Fragment>
+    {content.projection.background && (
+      <Fragment slot="bg">
+        <Fragment set:html={renderBackground(content.projection.background)} />
+      </Fragment>
+    )}
+  </Content>
+
+  <Steps
+    id="hoja-de-ruta"
+    tagline={content.roadmap.tagline}
+    title={content.roadmap.title}
+    subtitle={content.roadmap.subtitle}
+    items={content.roadmap.items}
+  />
+
+  <Features2
+    id="impacto"
+    tagline={content.impact.tagline}
+    title={content.impact.title}
+    subtitle={content.impact.subtitle}
+    items={content.impact.items}
+  >
+    {content.impact.background && (
+      <Fragment slot="bg">
+        <Fragment set:html={renderBackground(content.impact.background)} />
+      </Fragment>
+    )}
+  </Features2>
+
+  <FAQs
+    id="preguntas"
+    tagline={content.faqs.tagline}
+    title={content.faqs.title}
+    subtitle={content.faqs.subtitle}
+    items={content.faqs.items}
+    columns={2}
+  />
+
+  <CallToAction
+    id="alianzas"
+    title={content.callToAction.title}
+    subtitle={content.callToAction.subtitle}
+    actions={content.callToAction.actions}
+  />
+
+  <Contact
+    id="contacto"
+    tagline={content.contact.tagline}
+    title={content.contact.title}
+    subtitle={content.contact.subtitle}
+    inputs={content.contact.inputs}
+    textarea={content.contact.textarea}
+    disclaimer={content.contact.disclaimer}
+    button={content.contact.button}
+  />
+</PageLayout>
