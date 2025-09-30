@@ -10,6 +10,7 @@ import Features2 from '~/components/widgets/Features2.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Contact from '~/components/widgets/Contact.astro';
+import dossierPdf from '~/assets/docs/sports-scouting-sudamerica-bulgaria.pdf';
 
 const metadata = {
   title: 'Escuela Integral de Fútbol Profesional en Bulgaria',
@@ -27,12 +28,9 @@ const heroActions = [
   {
     text: 'Descargar dossier',
     variant: 'secondary',
-    type: 'button',
     icon: 'tabler:download',
-    title: 'Disponible próximamente',
-    'aria-disabled': 'true',
-    disabled: true,
-    class: 'cursor-not-allowed opacity-70 hover:opacity-70 focus:outline-none focus:ring-0',
+    href: dossierPdf,
+    download: true,
   },
 ];
 
@@ -390,12 +388,9 @@ const contactForm = {
       {
         text: 'Descargar dossier',
         variant: 'secondary',
-        type: 'button',
         icon: 'tabler:download',
-        title: 'Disponible próximamente',
-        'aria-disabled': 'true',
-        disabled: true,
-        class: 'cursor-not-allowed opacity-70 hover:opacity-70 focus:outline-none focus:ring-0',
+        href: dossierPdf,
+        download: true,
       },
     ]}
   />
